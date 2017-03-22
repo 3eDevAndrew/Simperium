@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *item;
 @property (weak, nonatomic) IBOutlet UILabel *createdDate;
 @property (weak, nonatomic) IBOutlet UILabel *ghostData;
+@property (weak, nonatomic) IBOutlet UILabel *v2Item;
 
 @end

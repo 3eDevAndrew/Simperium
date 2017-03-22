@@ -293,8 +293,6 @@
 {
     Todo *todo = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSString *text = todo.title.length > 0 ? todo.title : @"New Item";
-    cell.textLabel.text = [NSString stringWithFormat:@"v%@ | %@ | %@", todo.appVersion, todo.device,text];
-    cell.textLabel.text = [NSString stringWithFormat:@"v%@ | %@ | %@ | %@", todo.appVersion, todo.device,text, todo.item2];
     cell.item.text = text;
     cell.version.text = [NSString stringWithFormat:@"v%@",todo.appVersion];
     cell.device.text = todo.device;
@@ -303,6 +301,7 @@
     [df setDateFormat:@"HH:mm:ss MM-dd"];
     cell.createdDate.text = [NSString stringWithFormat:@"Created: %@",[df stringFromDate:todo.createdDate]];
     cell.ghostData.text = todo.ghostData;
+    cell.v2Item.text = todo.item2;
     
     // If we're in editing mode, show a discolosure arrow so you can change the text for the todo item
     cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;

@@ -38,18 +38,18 @@
                                 <rect key="frame" x="0.0" y="22" width="375" height="569"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VMe-hS-Ike" id="gVe-EK-fgB">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="568"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="569"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ver" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zbu-T5-pbE">
-                                            <rect key="frame" x="8" y="8" width="61" height="36"/>
+                                            <rect key="frame" x="8" y="8" width="40" height="34"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="device" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hJU-ce-Fcb">
-                                            <rect key="frame" x="77" y="7" width="101" height="38"/>
+                                            <rect key="frame" x="56" y="8" width="100" height="32"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
@@ -70,7 +70,14 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rvN-6H-6vn">
-                                            <rect key="frame" x="186" y="7" width="74" height="39"/>
+                                            <rect key="frame" x="141" y="6" width="68" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="v2Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Fy-8C-B4B">
+                                            <rect key="frame" x="198" y="6" width="93" height="32"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
@@ -83,6 +90,7 @@
                                     <outlet property="device" destination="hJU-ce-Fcb" id="CON-Xp-wUl"/>
                                     <outlet property="ghostData" destination="jGK-vN-1W8" id="3Fg-u2-w3C"/>
                                     <outlet property="item" destination="rvN-6H-6vn" id="opG-hu-Scz"/>
+                                    <outlet property="v2Item" destination="0Fy-8C-B4B" id="kLf-Uk-zRi"/>
                                     <outlet property="version" destination="zbu-T5-pbE" id="mfc-aA-ZDi"/>
                                 </connections>
                             </tableViewCell>
