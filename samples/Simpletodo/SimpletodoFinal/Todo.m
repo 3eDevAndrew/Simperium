@@ -11,6 +11,7 @@
 
 @implementation Todo
 
+@dynamic item2;
 @dynamic device;
 @dynamic appVersion;
 @dynamic createdDate;

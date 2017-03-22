@@ -86,6 +86,7 @@
     self.detailItem.title = self.textField.text;
     self.detailItem.appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     self.detailItem.device = [self deviceName];
+    self.detailItem.item2 = @"v2.0-Attri";
     self.detailItem.createdDate = [NSDate date];
 }
 -(NSString*) deviceName

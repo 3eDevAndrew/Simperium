@@ -285,7 +285,7 @@
 {
     Todo *todo = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSString *text = todo.title.length > 0 ? todo.title : @"New Item";
-    cell.textLabel.text = [NSString stringWithFormat:@"v%@ | %@ | %@", todo.appVersion, todo.device,text];
+    cell.textLabel.text = [NSString stringWithFormat:@"v%@ | %@ | %@ | %@", todo.appVersion, todo.device,text, todo.item2];
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"HH:mm:ss MM-dd"];

@@ -123,6 +123,7 @@
 		26CEF5FD14EC41AD00BEC0BF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		46B787DD16B70402001AA908 /* Simperium.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Simperium.xcodeproj; path = ../../Simperium.xcodeproj; sourceTree = "<group>"; };
 		46CC658E16B09C7700D5DC22 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		499AFD701E8237790055FE81 /* Simpletodo 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Simpletodo 2.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -540,9 +541,10 @@
 		26156AE514EC3D4C003332BA /* Simpletodo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				499AFD701E8237790055FE81 /* Simpletodo 2.xcdatamodel */,
 				26156AE614EC3D4C003332BA /* Simpletodo.xcdatamodel */,
 			);
-			currentVersion = 26156AE614EC3D4C003332BA /* Simpletodo.xcdatamodel */;
+			currentVersion = 499AFD701E8237790055FE81 /* Simpletodo 2.xcdatamodel */;
 			path = Simpletodo.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
