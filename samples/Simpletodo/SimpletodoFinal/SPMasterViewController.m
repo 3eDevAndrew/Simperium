@@ -8,12 +8,13 @@
 
 #import "SPMasterViewController.h"
 #import "SPDetailViewController.h"
+#import "TodoTableViewCell.h"
 #import "SPAppDelegate.h"
 #import "Todo.h"
 
 
 @interface SPMasterViewController ()
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+- (void)configureCell:(TodoTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
 @implementation SPMasterViewController
@@ -61,6 +62,7 @@
     
     // You can edit a todo item by tapping it when the table view is in editing mode
     [self.tableView setAllowsSelectionDuringEditing:YES];
+    [self.tableView setRowHeight:200];
 }
 
 - (void)viewDidUnload
@@ -101,9 +103,15 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"cCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    TodoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    if(cell == nil)
+    {
+        cell = [[TodoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
@@ -281,16 +289,20 @@
 }
  */
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(TodoTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Todo *todo = [self.fetchedResultsController objectAtIndexPath:indexPath];
     NSString *text = todo.title.length > 0 ? todo.title : @"New Item";
+    cell.textLabel.text = [NSString stringWithFormat:@"v%@ | %@ | %@", todo.appVersion, todo.device,text];
     cell.textLabel.text = [NSString stringWithFormat:@"v%@ | %@ | %@ | %@", todo.appVersion, todo.device,text, todo.item2];
+    cell.item.text = text;
+    cell.version.text = [NSString stringWithFormat:@"v%@",todo.appVersion];
+    cell.device.text = todo.device;
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"HH:mm:ss MM-dd"];
-
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Created: %@",[df stringFromDate:todo.createdDate]];
+    cell.createdDate.text = [NSString stringWithFormat:@"Created: %@",[df stringFromDate:todo.createdDate]];
+    cell.ghostData.text = todo.ghostData;
     
     // If we're in editing mode, show a discolosure arrow so you can change the text for the todo item
     cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;

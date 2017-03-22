@@ -29,6 +29,7 @@
 		26CEF5FC14EC419100BEC0BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26CEF5FB14EC419100BEC0BF /* SystemConfiguration.framework */; };
 		26CEF5FE14EC41AD00BEC0BF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26CEF5FD14EC41AD00BEC0BF /* libz.dylib */; };
 		46CC658F16B09C7700D5DC22 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46CC658E16B09C7700D5DC22 /* Default-568h@2x.png */; };
+		499AFD841E82D8EA0055FE81 /* TodoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 499AFD831E82D8EA0055FE81 /* TodoTableViewCell.m */; };
 		B535CFEC1E570E8300E932FF /* Simperium.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5CAA5611CAAE7AC006FE048 /* Simperium.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5CAA5621CAAE7B1006FE048 /* Simperium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5CAA5611CAAE7AC006FE048 /* Simperium.framework */; };
 /* End PBXBuildFile section */
@@ -124,6 +125,8 @@
 		46B787DD16B70402001AA908 /* Simperium.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Simperium.xcodeproj; path = ../../Simperium.xcodeproj; sourceTree = "<group>"; };
 		46CC658E16B09C7700D5DC22 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		499AFD701E8237790055FE81 /* Simpletodo 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Simpletodo 2.xcdatamodel"; sourceTree = "<group>"; };
+		499AFD821E82D8EA0055FE81 /* TodoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodoTableViewCell.h; sourceTree = "<group>"; };
+		499AFD831E82D8EA0055FE81 /* TodoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TodoTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +204,8 @@
 				26156AEB14EC3D4C003332BA /* SPDetailViewController.h */,
 				26156AEC14EC3D4C003332BA /* SPDetailViewController.m */,
 				26156AD414EC3D4C003332BA /* Supporting Files */,
+				499AFD821E82D8EA0055FE81 /* TodoTableViewCell.h */,
+				499AFD831E82D8EA0055FE81 /* TodoTableViewCell.m */,
 			);
 			name = Simpletodo;
 			path = SimpletodoFinal;
@@ -339,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				499AFD841E82D8EA0055FE81 /* TodoTableViewCell.m in Sources */,
 				26156ADA14EC3D4C003332BA /* main.m in Sources */,
 				26156ADE14EC3D4C003332BA /* SPAppDelegate.m in Sources */,
 				26156AE714EC3D4C003332BA /* Simpletodo.xcdatamodeld in Sources */,

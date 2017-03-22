@@ -17,5 +17,6 @@
 @dynamic createdDate;
 @dynamic title;
 @dynamic done;
+@dynamic ghostData;
 
 @end

@@ -173,8 +173,7 @@
         //store not compatible with model or error (store doesn't exist...)
     }
     
-    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:dict error:&error])
-    {
+    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:dict error:&error])    {
         /*
          Replace this implementation with code to handle the error appropriately.
          
