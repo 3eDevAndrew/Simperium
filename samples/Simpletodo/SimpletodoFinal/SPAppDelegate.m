@@ -162,49 +162,19 @@
                           [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
                           [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption,nil];
     
-    __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    NSManagedObjectModel * model = [self managedObjectModel];
+    __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
     
+    NSDictionary *metadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:NSSQLiteStoreType URL:storeURL error:&error];
     
-    /*
-     
-     NSNumber *aboutToMigrate = [[UserPreferences sharedUserPreferences] numberForKey:@"AboutToMigrate"];
-    if(aboutToMigrate.boolValue == YES) {
-        //Migration was interrupted
-        //If sync is ON then we delete sync file to reset
-        NSData *archivedToken = [[SecurePreferences shared] dataForKey:SIMPERIUM_TOKEN_SECURE_PREFERENCES_KEY];
-        BOOL syncEnabled = [[[UserPreferences sharedUserPreferences] getSettingsBundleValue:SIMPERIUM_SYNC_ENABLED_PREF_KEY] boolValue];
-        if(archivedToken && syncEnabled) {
-            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-            NSString *documentsDirectory = [paths objectAtIndex:0];
-            NSArray *fileList = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory error:nil];
-            for(NSString *fileName in fileList) {
-                if([fileName startsWith:@".FFMSync"] || [fileName startsWith:@"..FFMSync"]) {
-                    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:fileName];
-                    [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
-                }
-            }
-            paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-            NSString *appSuportDirectory = [paths objectAtIndex:0];
-            fileList = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:appSuportDirectory error:nil];
-            for(NSString *fileName in fileList) {
-                if([fileName startsWith:@"SP_"]) {
-                    NSString *filePath = [appSuportDirectory stringByAppendingPathComponent:fileName];
-                    [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error];
-                }
-            }
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [[NSNotificationCenter defaultCenter] postNotificationName:BUGFIX_SIGNOUT_NOTIFICATION object:nil];
-            });
-        }
-        else {
-            FileLog(MASTER_LOG, @"Archived token: %@. Sync Enabled: %@", archivedToken, syncEnabled?@"YES":@"NO");
-            [ViewUtils showAlertBoxWithTitle:@"Error loading your data" withMessage:@"There was a problem loading your data. Please contact team@foreflight.com for further assistance."];
-            return _persistentStoreCoordinator;
-        }
-    }*/
+    if([model isConfiguration:nil compatibleWithStoreMetadata:metadata]) {
+        //existing store compatible with model
+    }
+    else {
+        //store not compatible with model or error (store doesn't exist...)
+    }
     
-    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:dict error:&error])
-    {
+    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:dict error:&error])    {
         /*
          Replace this implementation with code to handle the error appropriately.
          
