@@ -11,6 +11,7 @@
 #import "SPAppDelegate.h"
 #import "Todo.h"
 
+
 @interface SPMasterViewController ()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
@@ -191,7 +192,7 @@
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"createdDate" ascending:YES];
     NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -283,7 +284,13 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     Todo *todo = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = todo.title.length > 0 ? todo.title : @"New Item";
+    NSString *text = todo.title.length > 0 ? todo.title : @"New Item";
+    cell.textLabel.text = [NSString stringWithFormat:@"v%@ | %@ | %@", todo.appVersion, todo.device,text];
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"HH:mm:ss MM-dd"];
+
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Created: %@",[df stringFromDate:todo.createdDate]];
     
     // If we're in editing mode, show a discolosure arrow so you can change the text for the todo item
     cell.editingAccessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -307,15 +314,10 @@
     
     // If appropriate, configure the new managed object.
     todo.title = @"";
+    todo.createdDate = [NSDate date];
+    todo.appVersion = @"";
+    todo.device = @"";
     todo.done = [NSNumber numberWithBool:NO];
-    NSInteger numRows = [self tableView:self.tableView numberOfRowsInSection:0];
-    
-    if (numRows > 0) {
-        Todo *lastTodo = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:numRows-1 inSection:0]];
-        todo.order = @([lastTodo.order integerValue] + 1);
-    } else {
-        todo.order = @(1);
-    }
     
     [self save];
 

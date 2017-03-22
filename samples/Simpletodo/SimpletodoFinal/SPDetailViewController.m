@@ -7,6 +7,7 @@
 //
 
 #import "SPDetailViewController.h"
+#import <sys/utsname.h>
 #import "Todo.h"
 
 @interface SPDetailViewController ()
@@ -83,8 +84,18 @@
 {
 	[super viewWillDisappear:animated];
     self.detailItem.title = self.textField.text;
+    self.detailItem.appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    self.detailItem.device = [self deviceName];
+    self.detailItem.createdDate = [NSDate date];
 }
-
+-(NSString*) deviceName
+{
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    
+    return [NSString stringWithCString:systemInfo.machine
+                              encoding:NSUTF8StringEncoding];
+}
 - (void)viewDidDisappear:(BOOL)animated
 {
 	[super viewDidDisappear:animated];

@@ -11,8 +11,10 @@
 
 @implementation Todo
 
+@dynamic device;
+@dynamic appVersion;
+@dynamic createdDate;
 @dynamic title;
-@dynamic order;
 @dynamic done;
 
 @end
