@@ -156,13 +156,29 @@
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"Simpletodo.sqlite"];
     
     NSError *error = nil;
-    __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
+    
+    NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:
+                          [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                          [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption,nil];
+    
+    NSManagedObjectModel * model = [self managedObjectModel];
+    __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
+    
+    NSDictionary *metadata = [NSPersistentStoreCoordinator metadataForPersistentStoreOfType:NSSQLiteStoreType URL:storeURL error:&error];
+    
+    if([model isConfiguration:nil compatibleWithStoreMetadata:metadata]) {
+        //existing store compatible with model
+    }
+    else {
+        //store not compatible with model or error (store doesn't exist...)
+    }
+    
+    if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:dict error:&error])
     {
         /*
          Replace this implementation with code to handle the error appropriately.
          
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
+         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
          
          Typical reasons for an error here include:
          * The persistent store is not accessible;
