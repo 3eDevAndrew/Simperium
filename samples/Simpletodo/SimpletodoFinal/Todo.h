@@ -13,8 +13,10 @@
 
 @interface Todo : SPManagedObject
 
+@property (nonatomic, retain) NSString *device;
+@property (nonatomic, retain) NSString *appVersion;
+@property (nonatomic, retain) NSDate *createdDate;
 @property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSNumber * order;
 @property (nonatomic, retain) NSNumber * done;
 
 @end
