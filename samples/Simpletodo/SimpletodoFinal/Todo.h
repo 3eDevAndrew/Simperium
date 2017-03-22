@@ -18,5 +18,6 @@
 @property (nonatomic, retain) NSDate *createdDate;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSNumber * done;
+@property (nonatomic, retain) NSString * ghostData;
 
 @end
